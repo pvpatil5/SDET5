@@ -1,21 +1,21 @@
 package com.practice;
 
-import java.util.Random;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
-import com.github.javafaker.Faker;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.generic.ExcelUtil;
+import com.generic.IAutoConstatnts;
 
 public class Sample {
 
 	@Test
-	public void launchbrowser() 
+	public void launchbrowser() throws Throwable 
 	{
-		Random random = new Random();
-		System.out.println(	random.nextInt(1000));
+		ExcelUtil excelUtil = new ExcelUtil();
+		int lastrow=excelUtil.getRowCount(IAutoConstatnts.excelpath, "Sheet1");
+
+		for (int i = 0; i <= lastrow; i++) 
+		{
+			System.out.println(excelUtil.readStringdatafromExcel(IAutoConstatnts.excelpath, "Sheet1", i, 0));
+		}
 	}
 }
