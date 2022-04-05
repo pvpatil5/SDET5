@@ -15,7 +15,13 @@ public class Sample {
 
 		for (int i = 0; i <= lastrow; i++) 
 		{
-			System.out.println(excelUtil.readStringdatafromExcel(IAutoConstatnts.excelpath, "Sheet1", i, 0));
+			int sal=excelUtil.readNumericdatafromExcel(IAutoConstatnts.excelpath, "Sheet1", i, 1);
+
+			if(sal>=32000) {
+				String name=excelUtil.readStringdatafromExcel(IAutoConstatnts.excelpath, "Sheet1", i, 0);
+
+				System.out.println(name);
+			}
 		}
 	}
 }

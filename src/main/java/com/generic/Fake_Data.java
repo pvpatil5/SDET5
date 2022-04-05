@@ -1,5 +1,6 @@
 package com.generic;
 
+import java.util.Date;
 import java.util.Random;
 
 import com.github.javafaker.Faker;
@@ -42,5 +43,12 @@ public class Fake_Data
 	public String phonenumber() {
 		Faker faker = new Faker();
 		return faker.phoneNumber().phoneNumber();
+	}
+	
+	public String getTodaysDate() {
+		Date date = new Date();
+		return date.toString();
+		
+		
 	}
 }
