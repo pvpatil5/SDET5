@@ -1,11 +1,15 @@
 package com.generic;
 
 import java.time.Duration;
+import java.util.Iterator;
+import java.util.Set;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WebDriverUtils 
 {
@@ -14,7 +18,8 @@ public class WebDriverUtils
 
 
 
-	public WebDriverUtils(WebDriver driver) {
+	public WebDriverUtils(WebDriver driver)
+	{
 		this.driver = driver;
 	}
 	/**
@@ -84,9 +89,59 @@ public class WebDriverUtils
 	/**
 	 * @author AMAR-G
 	 * This method will close the browser
+	 * @throws InterruptedException 
 	 */
-	public void closeBrowser() {
+	public void closeBrowser() throws InterruptedException {
+		Thread.sleep(6000);
 		driver.close();
 	}
+
+	/**
+	 * This method is for explicit wait
+	 * @param element
+	 */
+	public void waitforelement(WebElement element)
+	{
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOf(element));
+	}
+
+	/**
+	 * 
+	 * @param index
+	 */
+
+	public void switchtoframe(int index) {
+		driver.switchTo().frame(index);
+	}
+	public void switchtoframe(String StringorId) {
+		driver.switchTo().frame(StringorId);
+	}
+	public void switchtoframe(WebElement element) {
+		driver.switchTo().frame(element);
+	}
+
+	public void drangAndDrop(WebElement source, WebElement target) {
+		Actions action = new Actions(driver);
+		action.dragAndDrop(source, target).build().perform();
+	}
+
+	public void switchTowindow(String title) {
+		Set<String> windowId = driver.getWindowHandles();
+		Iterator<String> iterator=windowId.iterator();
+
+		while(iterator.hasNext()) 
+		{
+			String currentwindow=iterator.next();
+			String currenttitle=driver.switchTo().window(currentwindow).getTitle();
+			if(currenttitle.contains(title)) {
+				break;
+			}
+		}
+
+
+
+	}
+
 
 }

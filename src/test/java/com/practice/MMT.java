@@ -67,7 +67,7 @@ public class MMT {
 
 		driver.findElement(By.xpath("//div[text()='"+dest+"']")).click();
 
-	String a=	driver.findElement(By.xpath("//span[text()='DEPARTURE']")).getAttribute("title");
+		String a=	driver.findElement(By.xpath("//span[text()='DEPARTURE']")).getAttribute("title");
 
 		driver.findElement(By.xpath("//div[@aria-label='"+curtrentdate+"']")).click();
 
