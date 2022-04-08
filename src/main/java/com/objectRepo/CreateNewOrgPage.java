@@ -51,4 +51,12 @@ public class CreateNewOrgPage {
 	public WebElement getSaveorgbtn() {
 		return saveorgbtn;
 	}
+	
+	@FindBy(xpath="//input[@id='phone']")
+	private WebElement phonenotxtbox;
+
+
+	public WebElement getPhonenotxtbox() {
+		return phonenotxtbox;
+	}
 }

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" ignored="1" total="2" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="117497" started-at="2022-04-07T17:42:51 IST" finished-at="2022-04-07T17:44:48 IST">
+  <suite name="Failed suite [Suite]" duration-ms="44139" started-at="2022-04-08T15:42:52 IST" finished-at="2022-04-08T15:43:36 IST">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="117497" started-at="2022-04-07T17:42:51 IST" finished-at="2022-04-07T17:44:48 IST">
-      <class name="com.VTiger.TC.TC003_ContactWithOrg">
-        <test-method status="PASS" signature="createcontactwithorg()[pri:0, instance:com.VTiger.TC.TC003_ContactWithOrg@27f723]" name="createcontactwithorg" duration-ms="117301" started-at="2022-04-07T17:42:51 IST" finished-at="2022-04-07T17:44:48 IST">
+    <test name="Test(failed)" duration-ms="44139" started-at="2022-04-08T15:42:52 IST" finished-at="2022-04-08T15:43:36 IST">
+      <class name="com.VTiger.TC.TC002_CreateOrgTest">
+        <test-method status="PASS" signature="createorgwithmobilenoTest()[pri:0, instance:com.VTiger.TC.TC002_CreateOrgTest@4923ab24]" name="createorgwithmobilenoTest" duration-ms="44020" started-at="2022-04-08T15:42:52 IST" finished-at="2022-04-08T15:43:36 IST">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- createcontactwithorg -->
-      </class> <!-- com.VTiger.TC.TC003_ContactWithOrg -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+        </test-method> <!-- createorgwithmobilenoTest -->
+      </class> <!-- com.VTiger.TC.TC002_CreateOrgTest -->
+    </test> <!-- Test(failed) -->
+  </suite> <!-- Failed suite [Suite] -->
 </testng-results>

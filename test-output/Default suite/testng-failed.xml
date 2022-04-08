@@ -3,11 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.VTiger.TC.TC001_CreateOrg">
+      <class name="testNG.pac.Test2">
         <methods>
-          <include name="createorg"/>
+          <include name="a"/>
+          <include name="aftermethod"/>
+          <include name="beforemethod"/>
         </methods>
-      </class> <!-- com.VTiger.TC.TC001_CreateOrg -->
+      </class> <!-- testNG.pac.Test2 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

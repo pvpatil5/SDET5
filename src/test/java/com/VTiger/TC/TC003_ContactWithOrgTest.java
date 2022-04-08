@@ -24,12 +24,11 @@ import com.objectRepo.LoginPage;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class TC003_ContactWithOrg 
+public class TC003_ContactWithOrgTest 
 {
 	@Test
-	public void createcontactwithorg() throws InterruptedException, IOException 
+	public void createcontactwithorgTest() throws InterruptedException, IOException 
 	{
-
 		//login vtigercrm
 		Fake_Data data= new Fake_Data();
 		WebDriverManager.chromedriver().setup();
@@ -91,5 +90,62 @@ public class TC003_ContactWithOrg
 
 		driverUtils.closeBrowser();
 
+	}
+
+	@Test(invocationCount = 0)
+	public void createcontact() throws InterruptedException, IOException
+	{//login vtigercrm
+		Fake_Data data= new Fake_Data();
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver=new ChromeDriver();
+		WebDriverUtils driverUtils = new WebDriverUtils(driver);
+		LoginPage loginPage = new LoginPage(driver);
+		driverUtils.maximisewindow();
+		driverUtils.pageloadtimeout();
+
+		PropFile_Util propFile_Util = new PropFile_Util();
+		driver.get(propFile_Util.readdatafrompropfile("url"));
+
+		loginPage.loginToApp();
+
+		HomePage homePage = new HomePage(driver);
+		homePage.getContactslink().click();
+		// TC003 Start
+
+		ContactInfoPage contactInfoPage = new ContactInfoPage(driver);
+		contactInfoPage.getCreatecontactsimg().click();
+
+		CreateContactPage  contactPage = new CreateContactPage(driver);
+
+		Fake_Data fake_Data = new Fake_Data();
+		String contactname=fake_Data.lastname();
+		contactPage.getLastNameEdt().sendKeys(contactname);
+		
+		contactPage.getSaveBtn().click();
+
+		Thread.sleep(3000);
+		homePage.getContactslink().click();
+
+		//validation
+		contactInfoPage.checkcontactcreated(contactname, "Last Name");
+
+		Thread.sleep(3000);
+
+		String fname=driver.findElement(By.xpath("//span[@vtfieldname='lastname']/..")).getText();
+
+		if(fname.equals(contactname)) {
+			System.out.println("TC Pass");
+		}
+		else {
+			System.out.println("TC Fail");
+		}
+		//logout vtigercrm
+
+		homePage.logoutfromApp();
+
+		driverUtils.closeBrowser();
+
+		
+		
 	}
 }

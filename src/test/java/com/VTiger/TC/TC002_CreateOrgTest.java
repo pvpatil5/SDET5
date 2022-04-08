@@ -21,10 +21,10 @@ import com.objectRepo.OrgINfoPAge;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class TC002_CreateOrg{
+public class TC002_CreateOrgTest{
 
 	@Test
-	public void createorg() throws InterruptedException, IOException
+	public void createorgTest() throws InterruptedException, IOException
 	{
 		PropFile_Util file_Util= new PropFile_Util();
 		Fake_Data data = new Fake_Data();
@@ -40,7 +40,7 @@ public class TC002_CreateOrg{
 
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.loginToApp();
-		
+
 		HomePage homePage= new HomePage(driver);
 		homePage.getOrglink().click();
 		//Create New Organisation
@@ -55,7 +55,7 @@ public class TC002_CreateOrg{
 		Thread.sleep(3000);
 
 		homePage.getOrglink().click();
-		
+
 		orgINfoPAge.searchforOrg(orgname, "accountname");
 
 		String actual_orgname=	driver.findElement(By.xpath("//a[@title='Organizations']")).getText();
@@ -69,8 +69,60 @@ public class TC002_CreateOrg{
 		}	
 
 		homePage.logoutfromApp();
-		
+
 		driverUtils.closeBrowser();
+	}
+
+	@Test
+	public void createorgwithmobilenoTest() throws InterruptedException, IOException {
+		PropFile_Util file_Util= new PropFile_Util();
+		Fake_Data data = new Fake_Data();
+
+		//login vtigercrm
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver=new ChromeDriver();
+		WebDriverUtils driverUtils= new WebDriverUtils(driver);
+		driverUtils.pageloadtimeout();
+		driverUtils.maximisewindow();
+
+		driver.get(file_Util.readdatafrompropfile("url"));
+
+		LoginPage loginPage = new LoginPage(driver);
+		loginPage.loginToApp();
+
+		HomePage homePage= new HomePage(driver);
+		homePage.getOrglink().click();
+		//Create New Organisation
+		OrgINfoPAge orgINfoPAge = new  OrgINfoPAge(driver);
+		orgINfoPAge.getCreateorgbtn().click();
+
+		CreateNewOrgPage newOrgPage = new CreateNewOrgPage(driver);
+		String orgname=data.getOrgname();
+		newOrgPage.getorgnametxtbox().sendKeys(orgname);
+		
+		newOrgPage.getPhonenotxtbox().sendKeys(data.phonenumber());
+
+		newOrgPage.getSaveorgbtn().click();
+		Thread.sleep(3000);
+
+		homePage.getOrglink().click();
+
+		orgINfoPAge.searchforOrg(orgname, "accountname");
+
+		String actual_orgname=	driver.findElement(By.xpath("//a[@title='Organizations']")).getText();
+
+		if(actual_orgname.equals(orgname)) 
+		{
+			System.out.println("TC Passed");	
+		}
+		else {
+			System.out.println("FAil");
+		}	
+
+		homePage.logoutfromApp();
+
+		driverUtils.closeBrowser();
+
 	}
 
 }

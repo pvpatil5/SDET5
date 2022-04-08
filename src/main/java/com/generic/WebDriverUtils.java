@@ -138,10 +138,12 @@ public class WebDriverUtils
 				break;
 			}
 		}
-
-
-
 	}
 
-
+	public void acceptAlert() {
+		driver.switchTo().alert().accept();
+	}
+	public void dismissAlert() {
+		driver.switchTo().alert().dismiss();
+	}
 }
