@@ -1,46 +1,20 @@
 package com.VTiger.TC;
 
 import java.io.IOException;
-import java.time.Duration;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
-import com.generic.Fake_Data;
-import com.generic.PropFile_Util;
-import com.generic.WebDriverUtils;
+import com.generic.BaseClass;
 import com.objectRepo.CreateNewOrgPage;
 import com.objectRepo.HomePage;
-import com.objectRepo.LoginPage;
 import com.objectRepo.OrgINfoPAge;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+public class TC002_CreateOrgTest extends BaseClass{
 
-public class TC002_CreateOrgTest{
-
-	@Test
+	@Test(groups = "smoke")
 	public void createorgTest() throws InterruptedException, IOException
 	{
-		PropFile_Util file_Util= new PropFile_Util();
-		Fake_Data data = new Fake_Data();
-
-		//login vtigercrm
-		WebDriverManager.chromedriver().setup();
-		WebDriver driver=new ChromeDriver();
-		WebDriverUtils driverUtils= new WebDriverUtils(driver);
-		driverUtils.pageloadtimeout();
-		driverUtils.maximisewindow();
-
-		driver.get(file_Util.readdatafrompropfile("url"));
-
-		LoginPage loginPage = new LoginPage(driver);
-		loginPage.loginToApp();
-
 		HomePage homePage= new HomePage(driver);
 		homePage.getOrglink().click();
 		//Create New Organisation
@@ -68,28 +42,11 @@ public class TC002_CreateOrgTest{
 			System.out.println("FAil");
 		}	
 
-		homePage.logoutfromApp();
-
-		driverUtils.closeBrowser();
 	}
 
-	@Test
-	public void createorgwithmobilenoTest() throws InterruptedException, IOException {
-		PropFile_Util file_Util= new PropFile_Util();
-		Fake_Data data = new Fake_Data();
-
-		//login vtigercrm
-		WebDriverManager.chromedriver().setup();
-		WebDriver driver=new ChromeDriver();
-		WebDriverUtils driverUtils= new WebDriverUtils(driver);
-		driverUtils.pageloadtimeout();
-		driverUtils.maximisewindow();
-
-		driver.get(file_Util.readdatafrompropfile("url"));
-
-		LoginPage loginPage = new LoginPage(driver);
-		loginPage.loginToApp();
-
+	@Test(groups = "integration")
+	public void createorgwithmobilenoTest() throws InterruptedException, IOException 
+	{
 		HomePage homePage= new HomePage(driver);
 		homePage.getOrglink().click();
 		//Create New Organisation
@@ -99,7 +56,7 @@ public class TC002_CreateOrgTest{
 		CreateNewOrgPage newOrgPage = new CreateNewOrgPage(driver);
 		String orgname=data.getOrgname();
 		newOrgPage.getorgnametxtbox().sendKeys(orgname);
-		
+
 		newOrgPage.getPhonenotxtbox().sendKeys(data.phonenumber());
 
 		newOrgPage.getSaveorgbtn().click();
@@ -118,11 +75,6 @@ public class TC002_CreateOrgTest{
 		else {
 			System.out.println("FAil");
 		}	
-
-		homePage.logoutfromApp();
-
-		driverUtils.closeBrowser();
-
 	}
 
 }
