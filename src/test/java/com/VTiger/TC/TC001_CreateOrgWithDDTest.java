@@ -3,6 +3,7 @@ package com.VTiger.TC;
 import java.io.IOException;
 
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.generic.BaseClass;
@@ -19,8 +20,8 @@ public class TC001_CreateOrgWithDDTest extends BaseClass {
 		homePage.getOrglink().click();
 
 		OrgINfoPAge orgINfoPAge = new  OrgINfoPAge(driver);
-	//	orgINfoPAge.getCreateorgbtn().click();
-		
+		//	orgINfoPAge.getCreateorgbtn().click();
+
 		driverUtils.waitandclick(orgINfoPAge.getCreateorgbtn());
 
 		CreateNewOrgPage newOrgPage = new CreateNewOrgPage(driver);
@@ -42,13 +43,7 @@ public class TC001_CreateOrgWithDDTest extends BaseClass {
 
 		String actual_orgname=	driver.findElement(By.xpath("//a[@title='Organizations']")).getText();
 
-		if(actual_orgname.equals(orgname)) 
-		{
-			System.out.println("TC Passed");	
-		}
-		else {
-			System.out.println("FAil");
-		}
+		Assert.assertEquals(actual_orgname, orgname);
 	}
 
 	@Test(groups = "smoke")
@@ -83,14 +78,8 @@ public class TC001_CreateOrgWithDDTest extends BaseClass {
 
 		String msg= orgINfoPAge.getnoOrgfound().getText();
 
-
-		if(msg.equals("No Organization Found !")) 
-		{
-			System.out.println("TC Passed");	
-		}
-		else {
-			System.out.println("FAil");
-		}	
+		Assert.assertEquals(msg, "No Organization Found !");
+		
 	}
 
 }

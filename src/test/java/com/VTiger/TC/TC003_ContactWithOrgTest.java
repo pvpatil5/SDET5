@@ -3,6 +3,7 @@ package com.VTiger.TC;
 import java.io.IOException;
 
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.generic.BaseClass;
@@ -50,16 +51,12 @@ public class TC003_ContactWithOrgTest extends BaseClass
 
 		String fname=driver.findElement(By.xpath("//span[@vtfieldname='lastname']/..")).getText();
 
-		if(fname.equals(contactname)) {
-			System.out.println("TC Pass");
-		}
-		else {
-			System.out.println("TC Fail");
-		}
+		Assert.assertEquals(fname, contactname);
+		
 	}
 
 	@Test(groups="smoke")
-	public void createcontact() throws InterruptedException, IOException
+	public void createcontactTest() throws InterruptedException, IOException
 	{
 		HomePage homePage = new HomePage(driver);
 		homePage.getContactslink().click();
@@ -84,11 +81,6 @@ public class TC003_ContactWithOrgTest extends BaseClass
 
 		String fname=driver.findElement(By.xpath("//span[@vtfieldname='lastname']/..")).getText();
 
-		if(fname.equals(contactname)) {
-			System.out.println("TC Pass");
-		}
-		else {
-			System.out.println("TC Fail");
-		}
+		Assert.assertEquals(fname, contactname);
 	}
 }

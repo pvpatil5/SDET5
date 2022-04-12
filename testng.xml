@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite" >
+	<test name="Test1" parallel="methods" thread-count="5">
+		<classes>
+			<class name="com.VTiger.TC.TC001_CreateOrgWithDDTest">
+			</class>
+			<class name="com.VTiger.TC.TC002_CreateOrgTest">
+				<methods>
+					<include name="createorgTest"></include>
+					<include name="createorgwithmobilenoTest"></include>
+				</methods>
+			</class>
+			<class name="com.VTiger.TC.TC003_ContactWithOrgTest">
+				<methods>
+					<include name="createcontactwithorgTest"></include>
+					<include name="createcontactTest"></include>
+				</methods>
+			</class>
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->

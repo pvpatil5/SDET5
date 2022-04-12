@@ -11,6 +11,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Parameters;
 
 import com.objectRepo.HomePage;
 import com.objectRepo.LoginPage;
@@ -22,6 +23,7 @@ public class BaseClass
 	public Fake_Data data= new Fake_Data();
 	public WebDriverUtils driverUtils;
 	public WebDriver driver;
+	public static WebDriver sdriver;
 	public HomePage homePage;
 	PropFile_Util propFile_Util = new PropFile_Util();
 
@@ -37,10 +39,11 @@ public class BaseClass
 		System.out.println("Dis-Connect from DB");
 	}
 
+	@Parameters("BROWSER")
 	@BeforeClass(groups= {"smoke","integration","regression"})
-	public void beforeclass() throws IOException
+	public void beforeclass(String BROWSER) throws IOException
 	{
-		String BROWSER=propFile_Util.readdatafrompropfile("browser");
+		//	String BROWSER=propFile_Util.readdatafrompropfile("browser");
 		if(BROWSER.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
 			driver=new ChromeDriver();
@@ -49,8 +52,8 @@ public class BaseClass
 			WebDriverManager.firefoxdriver().setup();
 			driver= new FirefoxDriver();
 		}
-		
 
+		sdriver=driver;
 		driverUtils = new WebDriverUtils(driver);
 
 	}

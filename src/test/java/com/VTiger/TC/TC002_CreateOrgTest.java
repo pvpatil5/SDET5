@@ -1,8 +1,11 @@
 package com.VTiger.TC;
 
+import static org.testng.Assert.assertEquals;
+
 import java.io.IOException;
 
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.generic.BaseClass;
@@ -33,14 +36,7 @@ public class TC002_CreateOrgTest extends BaseClass{
 		orgINfoPAge.searchforOrg(orgname, "accountname");
 
 		String actual_orgname=	driver.findElement(By.xpath("//a[@title='Organizations']")).getText();
-
-		if(actual_orgname.equals(orgname)) 
-		{
-			System.out.println("TC Passed");	
-		}
-		else {
-			System.out.println("FAil");
-		}	
+		Assert.assertEquals(actual_orgname, orgname);
 
 	}
 
@@ -68,13 +64,8 @@ public class TC002_CreateOrgTest extends BaseClass{
 
 		String actual_orgname=	driver.findElement(By.xpath("//a[@title='Organizations']")).getText();
 
-		if(actual_orgname.equals(orgname)) 
-		{
-			System.out.println("TC Passed");	
-		}
-		else {
-			System.out.println("FAil");
-		}	
+		Assert.assertEquals(actual_orgname, orgname);
+
 	}
 
 }
