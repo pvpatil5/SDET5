@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.SkipException;
 import org.testng.annotations.Test;
 
 import com.generic.BaseClass;
@@ -44,6 +45,7 @@ public class TC001_CreateOrgWithDDTest extends BaseClass {
 		String actual_orgname=	driver.findElement(By.xpath("//a[@title='Organizations']")).getText();
 
 		Assert.assertEquals(actual_orgname, orgname);
+		throw new SkipException("msg");
 	}
 
 	@Test(groups = "smoke")

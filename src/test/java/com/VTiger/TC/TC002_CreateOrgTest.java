@@ -1,7 +1,5 @@
 package com.VTiger.TC;
 
-import static org.testng.Assert.assertEquals;
-
 import java.io.IOException;
 
 import org.openqa.selenium.By;

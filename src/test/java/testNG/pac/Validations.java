@@ -6,7 +6,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -25,7 +24,7 @@ public class Validations
 
 		driver.get("http://localhost:8888");
 
-		String title=	driver.getTitle();
+	//	String title=	driver.getTitle();
 
 		driver.findElement(By.name("user_name")).sendKeys("admin");
 
@@ -50,7 +49,7 @@ public class Validations
 
 		driver.get("http://localhost:8888");
 
-		String title=	driver.getTitle();
+	//	String title=	driver.getTitle();
 
 		driver.findElement(By.name("user_name")).sendKeys("admin");
 
@@ -73,7 +72,7 @@ public class Validations
 
 		driver.get("httpS://FACEBOOK.COM");
 
-		String title=	driver.getTitle();
+		//String title=	driver.getTitle();
 
 		driver.findElement(By.name("user_name")).sendKeys("admin");
 
