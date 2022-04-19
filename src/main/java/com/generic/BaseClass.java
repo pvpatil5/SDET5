@@ -39,11 +39,11 @@ public class BaseClass
 		System.out.println("Dis-Connect from DB");
 	}
 
-	@Parameters("BROWSER")
+	//@Parameters("BROWSER")
 	@BeforeClass(groups= {"smoke","integration","regression"})
-	public void beforeclass(String BROWSER) throws IOException
+	public void beforeclass() throws IOException
 	{
-		//	String BROWSER=propFile_Util.readdatafrompropfile("browser");
+		String BROWSER=propFile_Util.readdatafrompropfile("browser");
 		if(BROWSER.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
 			driver=new ChromeDriver();
